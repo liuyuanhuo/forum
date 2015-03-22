@@ -9,12 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Forum.CommandService</RootNamespace>
     <AssemblyName>Forum.CommandService</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,51 +38,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper">
-      <HintPath>..\packages\Dapper.1.38\lib\net45\Dapper.dll</HintPath>
-    </Reference>
-    <Reference Include="ECommon, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ECommon.1.4.3\lib\net45\ECommon.dll</HintPath>
-    </Reference>
-    <Reference Include="ECommon.Autofac, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ecommon.autofac.1.4.2\lib\net45\ECommon.Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="ECommon.Dapper, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ECommon.Dapper.1.4.2\lib\net45\ECommon.Dapper.dll</HintPath>
-    </Reference>
-    <Reference Include="ECommon.JsonNet, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ecommon.jsonnet.1.4.2\lib\net45\ECommon.JsonNet.dll</HintPath>
-    </Reference>
-    <Reference Include="ECommon.Log4Net, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ecommon.log4net.1.4.2\lib\net45\ECommon.Log4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode, Version=2.5.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ENode.2.5.6\lib\net45\ENode.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.EQueue, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\enode.equeue.1.6.1\lib\net45\ENode.EQueue.dll</HintPath>
-    </Reference>
-    <Reference Include="EQueue, Version=1.3.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EQueue.1.3.9\lib\net45\EQueue.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
@@ -129,6 +93,34 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ecommon\src\ECommon\ECommon.csproj">
+      <Project>{d60f17ce-ff99-42cd-af71-97c157b17af3}</Project>
+      <Name>ECommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ecommon\src\Extensions\ECommon.Autofac\ECommon.Autofac.csproj">
+      <Project>{1c523165-5cc7-497a-99d0-9e59e3110c54}</Project>
+      <Name>ECommon.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ecommon\src\Extensions\ECommon.JsonNet\ECommon.JsonNet.csproj">
+      <Project>{a118c5a4-52c3-4659-860a-31ee526b0877}</Project>
+      <Name>ECommon.JsonNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ecommon\src\Extensions\ECommon.Log4Net\ECommon.Log4Net.csproj">
+      <Project>{c69cf480-4b6b-4006-8c17-43054c1ebe1c}</Project>
+      <Name>ECommon.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\enode\src\ENode.EQueue\ENode.MQClient.csproj">
+      <Project>{8b5368e5-8518-4684-90eb-048dcbf76e9a}</Project>
+      <Name>ENode.MQClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\enode\src\ENode\ENode.csproj">
+      <Project>{f884f01a-ed67-4f21-8576-fd2588491b24}</Project>
+      <Name>ENode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Part.MQClient\Part.MQClient.csproj">
+      <Project>{7b864415-e578-4b8e-8290-6a8c38e50c3b}</Project>
+      <Name>Part.MQClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.CommandHandlers\Forum.CommandHandlers.csproj">
       <Project>{985e2001-f607-44bf-a84b-31e9b7d89d0c}</Project>
       <Name>Forum.CommandHandlers</Name>
@@ -136,6 +128,10 @@
     <ProjectReference Include="..\Forum.Commands\Forum.Commands.csproj">
       <Project>{7787ec6c-9cf3-401c-803a-b4da2b0ca9ef}</Project>
       <Name>Forum.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Forum.CompatibleStoreHandlers\Forum.CompatibleStoreHandlers.csproj">
+      <Project>{65bfc2f9-acd8-468e-945f-222b7958aab8}</Project>
+      <Name>Forum.CompatibleStoreHandlers</Name>
     </ProjectReference>
     <ProjectReference Include="..\Forum.Domain.Dapper\Forum.Domain.Dapper.csproj">
       <Project>{6ad347f8-d02e-4aaa-a72b-c4ad93971986}</Project>

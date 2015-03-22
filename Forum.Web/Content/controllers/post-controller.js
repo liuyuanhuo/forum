@@ -54,6 +54,7 @@
             if (result.success) {
                 showAutoCloseAlert();
                 $("#float-box-newPost").modal("hide");
+                window.location.reload();
             } else {
                 $scope.errorMsg = result.errorMsg;
             }

@@ -80,7 +80,8 @@ namespace Forum.CommandService
                 Assembly.Load("Forum.Domain"),
                 Assembly.Load("Forum.Domain.Dapper"),
                 Assembly.Load("Forum.CommandHandlers"),
-                Assembly.Load("Forum.CommandService")
+                Assembly.Load("Forum.CommandService"),
+                Assembly.Load("Forum.CompatibleStoreHandler")
             };
             var setting = new ConfigurationSetting
             {
@@ -97,6 +98,7 @@ namespace Forum.CommandService
                 .UseSqlServerEventStore()
                 .UseSqlServerSequenceMessagePublishedVersionStore()
                 .UseSqlServerMessageHandleRecordStore()
+                .UseCompatibleAggregateStore()
                 .UseEQueue()
                 .InitializeBusinessAssemblies(assemblies);
             _logger.Info("ENode initialized.");

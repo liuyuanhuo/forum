@@ -66,14 +66,16 @@ namespace Forum.Web.Controllers
         [AsyncTimeout(5000)]
         public async Task<ActionResult> Create(CreatePostModel model)
         {
-            var result = await _commandService.SendAsync(
+            AsyncTaskResult<CommandResult> asyncTaskResult = await _commandService.ExecuteAsync(
                 new CreatePostCommand(
                     model.Subject,
                     model.Body,
                     model.SectionId,
-                    _contextService.CurrentAccount.AccountId));
+                    _contextService.CurrentAccount.AccountId)
+                    , CommandReturnType.EventHandled);
 
-            if (result.Status != AsyncTaskStatus.Success)
+            var result = asyncTaskResult.Data; 
+            if (result.Status == CommandStatus.Failed)
             {
                 return Json(new { success = false, errorMsg = result.ErrorMessage });
             }
@@ -91,9 +93,9 @@ namespace Forum.Web.Controllers
                 return Json(new { success = false, errorMsg = "您不是帖子的作者，不能编辑该帖子。" });
             }
 
-            var result = await _commandService.SendAsync(new UpdatePostCommand(model.Id, model.Subject, model.Body));
-
-            if (result.Status != AsyncTaskStatus.Success)
+            AsyncTaskResult<CommandResult> asyncTaskResult = await _commandService.ExecuteAsync(new UpdatePostCommand(model.Id, model.Subject, model.Body), CommandReturnType.EventHandled);
+            var result = asyncTaskResult.Data;
+            if (result.Status == CommandStatus.Failed)
             {
                 return Json(new { success = false, errorMsg = result.ErrorMessage });
             }

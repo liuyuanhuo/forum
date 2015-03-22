@@ -21,5 +21,14 @@ namespace Forum.Domain.Posts
             SectionId = sectionId;
             AuthorId = authorId;
         }
+
+        public PostCreatedEvent(string id, int version, string subject, string body, string sectionId, string authorId)
+            : base(id, version)
+        {
+            Subject = subject;
+            Body = body;
+            SectionId = sectionId;
+            AuthorId = authorId;
+        }
     }
 }

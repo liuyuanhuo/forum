@@ -16,5 +16,11 @@ namespace Forum.Domain.Posts
         {
             StatisticInfo = statisticInfo;
         }
+
+        public PostReplyStatisticInfoChangedEvent(string id, int version, PostReplyStatisticInfo statisticInfo)
+             : base(id, version) 
+        {
+            StatisticInfo = statisticInfo;
+        }
     }
 }

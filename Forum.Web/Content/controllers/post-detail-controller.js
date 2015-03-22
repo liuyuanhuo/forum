@@ -81,6 +81,7 @@
             if (result.success) {
                 showAutoCloseAlert();
                 $("#float-box-newReply").modal("hide");
+                window.location.reload();
             } else {
                 $scope.errorMsg = result.errorMsg;
             }
@@ -109,6 +110,7 @@
             if (result.success) {
                 showAutoCloseAlert();
                 $("#float-box-editingPost").modal("hide");
+                window.location.reload();
             } else {
                 $scope.errorMsg = result.errorMsg;
             }
@@ -132,6 +134,7 @@
             if (result.success) {
                 showAutoCloseAlert();
                 $("#float-box-editingReply").modal("hide");
+                window.location.reload();
             } else {
                 $scope.errorMsg = result.errorMsg;
             }

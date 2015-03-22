@@ -38,14 +38,14 @@ namespace Forum.Web.Controllers
         [AsyncTimeout(5000)]
         public async Task<ActionResult> Create(CreateReplyModel model)
         {
-            var result = await _commandService.SendAsync(
+            AsyncTaskResult<CommandResult> asyncTaskResult = await _commandService.ExecuteAsync(
                 new CreateReplyCommand(
                     model.PostId,
                     model.ParentId,
                     model.Body,
-                    _contextService.CurrentAccount.AccountId));
-
-            if (result.Status != AsyncTaskStatus.Success)
+                    _contextService.CurrentAccount.AccountId), CommandReturnType.EventHandled);
+            var result = asyncTaskResult.Data;
+            if (result.Status == CommandStatus.Failed)
             {
                 return Json(new { success = false, errorMsg = result.ErrorMessage });
             }
@@ -63,9 +63,10 @@ namespace Forum.Web.Controllers
                 return Json(new { success = false, errorMsg = "您不是回复的作者，不能编辑该回复。" });
             }
 
-            var result = await _commandService.SendAsync(new ChangeReplyBodyCommand(model.Id, model.Body));
+            AsyncTaskResult<CommandResult> asyncTaskResult = await _commandService.ExecuteAsync(new ChangeReplyBodyCommand(model.Id, model.Body), CommandReturnType.EventHandled);
 
-            if (result.Status != AsyncTaskStatus.Success)
+            var result = asyncTaskResult.Data;
+            if (result.Status == CommandStatus.Failed)
             {
                 return Json(new { success = false, errorMsg = result.ErrorMessage });
             }
