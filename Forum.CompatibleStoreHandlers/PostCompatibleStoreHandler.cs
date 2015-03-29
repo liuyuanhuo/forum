@@ -23,7 +23,7 @@ namespace Forum.CompatibleStoreHandler
         }
         public DomainEventStream GetAggregateRestoreEventStream(string postId, Post nullObject)
         {
-            using (var connection = new SqlConnection(ConfigSettings.ConnectionString))
+            using (var connection = new SqlConnection(ConfigSettings.Forum_DBConnectionString))
             {
                 dynamic post = connection.QueryList<dynamic>(new { Id = postId }, Constants.PostTable).SingleOrDefault();
                 PostCreatedEvent postCreatedEvent = null;
