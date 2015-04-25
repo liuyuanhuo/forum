@@ -5,6 +5,7 @@ using ENode.Eventing;
 using ENode.Infrastructure;
 using Forum.Domain.Replies;
 using Forum.Infrastructure;
+using ECommon.IO;
 
 namespace Forum.Denormalizers.Dapper
 {

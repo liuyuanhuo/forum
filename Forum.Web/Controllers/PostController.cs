@@ -12,6 +12,7 @@ using Forum.Web.Controls;
 using Forum.Web.Extensions;
 using Forum.Web.Models;
 using Forum.Web.Services;
+using ECommon.IO;
 
 namespace Forum.Web.Controllers
 {

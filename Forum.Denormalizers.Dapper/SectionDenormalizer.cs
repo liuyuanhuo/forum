@@ -4,6 +4,7 @@ using ECommon.Dapper;
 using ENode.Infrastructure;
 using Forum.Domain.Sections;
 using Forum.Infrastructure;
+using ECommon.IO;
 
 namespace Forum.Denormalizers.Dapper
 {

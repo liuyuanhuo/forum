@@ -6,6 +6,7 @@ using ECommon.Components;
 using ECommon.Logging;
 using ENode.Infrastructure;
 using Forum.Infrastructure;
+using ECommon.IO;
 
 namespace Forum.Denormalizers.Dapper
 {

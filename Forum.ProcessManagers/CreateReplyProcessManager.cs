@@ -4,6 +4,7 @@ using ENode.Commanding;
 using ENode.Infrastructure;
 using Forum.Commands.Posts;
 using Forum.Domain.Replies;
+using ECommon.IO;
 
 namespace Forum.ProcessManagers
 {
