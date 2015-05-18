@@ -10,7 +10,7 @@ using System;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace Forum.CompatibleStoreHandler
+namespace Forum.CompatibleStoreHandlers
 {
     [Component]
     public class PostCompatibleStoreHandler : ICompatibleStoreHandler<Post>, ICompatibleStoreHandler<Reply>

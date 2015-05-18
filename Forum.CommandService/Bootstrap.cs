@@ -81,7 +81,7 @@ namespace Forum.CommandService
                 Assembly.Load("Forum.Domain.Dapper"),
                 Assembly.Load("Forum.CommandHandlers"),
                 Assembly.Load("Forum.CommandService"),
-                Assembly.Load("Forum.CompatibleStoreHandler")
+                Assembly.Load("Forum.CompatibleStoreHandlers")
             };
             var setting = new ConfigurationSetting
             {
